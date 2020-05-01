@@ -1,0 +1,71 @@
+<head>
+  <title>Créer Etudiant</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div class="container">
+  <form #studentForm="ngForm" (ngSubmit)="createStudent(studentForm)" class="form-horizontal">
+    <fieldset>
+      <h3 style="text-align:center">Nouveau Étudiant</h3>
+
+      <!-- Input numéro étudiant-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Id_Student">Numéro d'Étudiant</label>
+        <div class="col-md-4">
+          <input [(ngModel)]="numeroEtud" id="Id_Student" name="Id_Student" type="text" placeholder="Entrez le numéro d'Étudiant" class="form-control input-md" required="">
+        </div>
+      </div>
+
+      <!-- Text Nom-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="First_Name">Nom</label>
+        <div class="col-md-4">
+          <input [(ngModel)]="nomEtud" id="First_Name" name="First Name" type="text" placeholder="Entrez votre nom" class="form-control input-md" required="">
+        </div>
+      </div>
+
+      <!-- Text prenom-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Last_Name">Prénom</label>
+        <div class="col-md-4">
+          <input [(ngModel)]="prenomEtud" id="Last_Name" name="Last Name" type="text" placeholder="Entrez votre prénom" class="form-control input-md" required="">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Promotion">Promotion</label>
+        <div class="col-md-4">
+          <select [(ngModel)]="promotionChoisie" id="promotion">
+            <option *ngFor="let promotion of this.promotions">
+              {{promotion.getWording()}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Groupe">Groupe</label>
+        <div class="col-md-4">
+          <select [(ngModel)]="groupChoisi" id="Groupe">
+            <option *ngFor="let group of this.groups">
+              {{group.getWording()}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Button (Double) -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+        <div class="col-md-8">
+          <button id="button1id" name="button1id" class="btn btn-success">Valider</button>
+          <button id="button2id" name="button2id" class="btn btn-danger" (click)="resetForm(studentForm)" >Vider le formulaire </button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+</body>
