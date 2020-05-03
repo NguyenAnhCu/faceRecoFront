@@ -12,12 +12,20 @@
 
       <div class="form-group">
         <label class="col-md-4 control-label" >Sélectionner une photo</label>
+        <input type = "file" (change)="onFileSelected($event)">
       </div>
 
       <div class="form-group">
         <label class="col-md-4 control-label" >Prendre une photo avec la webcam</label>
+        <button (click)="startCamera()">Ouvrir caméra</button>
+        <button id="snap" (click)="capture()">Snap Photo</button>
+        <div class="p-1">
+          <video #video class="vid" autoplay></video>
+        </div>
+        <div class="p-1">
+          <canvas #canvas class="vid"></canvas>
+        </div>
       </div>
-
       <div class="form-group">
         <label class="col-md-4 control-label" for="button1id"></label>
         <div class="col-md-8">

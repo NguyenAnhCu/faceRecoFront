@@ -16,3 +16,8 @@ label {
   padding: 12px 12px 6px 0;
   display: inline-block;
 }
+
+.vid {
+  width: 25%;
+  height: 25%;
+}
