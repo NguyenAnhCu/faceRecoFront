@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
-import * as stream from 'stream';
+
 
 @Component({
   selector: 'app-recongnize-student',
@@ -10,9 +10,12 @@ import * as stream from 'stream';
 export class RecongnizeStudentComponent implements OnInit {
 
   public captures: Array<any>;
+  public camOpen: boolean;
   constructor(private renderer: Renderer2) {
     this.captures = [];
+    this.camOpen = false;
   }
+
   public selectedImage = null;
   videoWidth = 0;
   videoHeight = 0;
@@ -27,24 +30,36 @@ export class RecongnizeStudentComponent implements OnInit {
   @ViewChild('video', { static: true }) videoElement: ElementRef;
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
 
-  attachVideo(stream) {
-    this.renderer.setProperty(this.videoElement.nativeElement, 'srcObject', stream);
-  }
 
   ngOnInit() {
+  }
+  onFileSelected(event) {
+    this.selectedImage = event.target.files[0];
+    console.log(event);
   }
 
   startCamera() {
     if (!!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
       navigator.mediaDevices.getUserMedia(this.constraints).then(this.attachVideo.bind(this)).catch(this.handleError);
+      this.camOpen = true;
     } else {
       alert('Sorry, camera not available.');
     }
   }
 
-  onFileSelected(event) {
-    this.selectedImage = event.target.files[0];
-    console.log(event);
+  stopCamera(stream) {
+    stream.getTracks().forEach((track) => {
+      track.stop();
+      this.camOpen = false;
+    });
+  }
+
+  attachVideo(stream) {
+    this.renderer.setProperty(this.videoElement.nativeElement, 'srcObject', stream);
+    this.renderer.listen(this.videoElement.nativeElement, 'play', (event) => {
+      this.videoHeight = this.videoElement.nativeElement.videoHeight;
+      this.videoWidth = this.videoElement.nativeElement.videoWidth;
+    });
   }
 
   capture() {
@@ -55,4 +70,6 @@ export class RecongnizeStudentComponent implements OnInit {
   handleError(error) {
     console.log('Error: ', error);
   }
+
+
 }

@@ -17,12 +17,11 @@
 
       <div class="form-group">
         <label class="col-md-4 control-label" >Prendre une photo avec la webcam</label>
-        <button (click)="startCamera()">Ouvrir caméra</button>
-        <button id="snap" (click)="capture()">Snap Photo</button>
+        <button (click)="startCamera()" [hidden]="camOpen == true">Ouvrir caméra</button>
+        <button id="snap" (click)="capture()" [hidden] = "camOpen == false">Prendre Photo</button>
+        <button id = "stopCam" (click)="stopCamera(constraints)" [hidden] = "camOpen == false">Arrête Caméra</button>
         <div class="p-1">
           <video #video class="vid" autoplay></video>
-        </div>
-        <div class="p-1">
           <canvas #canvas class="vid"></canvas>
         </div>
       </div>
@@ -32,7 +31,6 @@
           <button id="button1id" name="button1id" class="btn btn-success">Valider</button>
         </div>
       </div>
-
     </fieldset>
   </form>
 </div>
