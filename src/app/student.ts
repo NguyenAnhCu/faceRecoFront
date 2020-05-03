@@ -1,20 +1,24 @@
-import {Group} from './group';
+import {Group, GroupDetails} from './group';
+
+export interface StudentDetails {
+  number: number;
+  lastName: string;
+  firstName: string;
+  group: GroupDetails;
+}
 
 export class Student {
-  constructor(private numberE: number, private lastname: string, private firstname: string, private group: Group) {
+  constructor(private number: number, private lastName: string, private firstName: string, private group: Group) {
   }
-  getNumberE(): number {
-    return this.numberE;
+  getNumber(): number{
+    return this.number;
   }
-
-  getLastname(): string {
-    return this.lastname;
+  getLastName(): string{
+    return this.lastName;
   }
-
-  getFirstname(): string {
-    return this.firstname;
+  getFirstName(): string {
+    return this.firstName;
   }
-
   getGroup(): Group {
     return this.group;
   }

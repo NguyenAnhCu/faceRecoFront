@@ -12,30 +12,53 @@ import {Student} from '../student';
 })
 export class AjoutEtudiantComponent implements OnInit {
   promotions: Promotion[] = [];
-  groups: Group[];
+  groups: Group[] = [];
   numeroEtud = '';
   nomEtud = '';
   prenomEtud = '';
-  groupChoisi: Group;
+  group: Group;
+  groupsChoisis: Group[] = [];
+  groupChoisi: string;
+  promotionId: string;
   promotionChoisie: Promotion;
 
   constructor(private apiFaceRecoServ: ApiFaceRecoService) { }
 
   ngOnInit() {
     this.apiFaceRecoServ.getAllPromotions().subscribe(data => {
-      console.log(data);
-      // promotions = ...
+      data.forEach((p) => {
+        this.promotions.push(new Promotion(p.id, p.wording));
+      });
     });
     this.apiFaceRecoServ.getAllGroups().subscribe(data => {
-      console.log(data);
-      // groups = ...
+      data.forEach((g) => {
+        const promotion: Promotion = new Promotion(g.promotion.id, g.promotion.wording);
+        this.groups.push(new Group(g.id, g.wording, promotion));
+      });
     });
   }
 
   createStudent(studentForm: NgForm) {
-    const student: Student = new Student(Number(this.numeroEtud), this.nomEtud, this.prenomEtud, this.groupChoisi);
-    this.apiFaceRecoServ.postStudent(student).subscribe(data => {
-      console.log('Etudiant ajouté');
+    this.apiFaceRecoServ.getGroupById(this.groupChoisi).subscribe(data => {
+      const group = new Group(data.id, data.wording, this.promotionChoisie);
+      const student = new Student ((Number(this.numeroEtud)), this.nomEtud, this.prenomEtud, group);
+      this.apiFaceRecoServ.postStudent(student).subscribe(d =>{
+        this.apiFaceRecoServ.postStudent(student);
+        console.log('Etudiant ajouté')
+        studentForm.resetForm();
+      });
+    });
+  }
+
+  findGroups() {
+    this.apiFaceRecoServ.getPromotionById(this.promotionId).subscribe(data =>{
+      this.promotionChoisie = new Promotion(data.id, data.wording);
+      this.groupsChoisis.splice(0, this.groupsChoisis.length);
+      this.groups.forEach((e) => {
+        if (e.getPromotion().getWording() === this.promotionChoisie.getWording()) {
+          this.groupsChoisis.push(e);
+        }
+      });
     });
   }
 

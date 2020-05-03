@@ -4,31 +4,24 @@
 
 <body>
 <div class="container">
-  <form #timesheetSearch="ngForm" (ngSubmit)="findTimesheet()" class="form-horizontal">
+  <form class="form-horizontal">
     <fieldset>
       <h3 style="text-align:center">Feuilles de présence </h3>
 
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="date">Date</label>
-        <input type="date" id="date" name="trip-start"
-               value="2018-07-22"
-               min="2018-01-01" max="2018-12-31">
-      </div>
-
-      <!-- Mettre un autre crière de recherche group ? promotion ? -->
-
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="button1id"></label>
-        <div class="col-md-8">
-          <button id="button1id" name="button1id" class="btn btn-success">Valider</button>
+      <div class="row">
+        <div class = "col-sm-12 col-md-12 col-lg-12">
+          <ul>
+            <li *ngFor="let timesheet of this.timesheets">
+                {{timesheet.getDate()}}
+                <ul>
+                  <li *ngFor="let presence of timesheet.getPresence()" >
+                    {{presence.getPresent()}} {{presence.getStudent().getFirstName()}} {{presence.getStudent().getLastName()}}
+                  </li>
+                </ul>
+            </li>
+          </ul>
         </div>
       </div>
-
-      <div class="form-group">
-        <label class="col-md-4 control-label" >Liste d'étudiants</label>
-      </div>
-
-      <!-- Mettre le tableau d'étudiants ... -->
 
     </fieldset>
   </form>
