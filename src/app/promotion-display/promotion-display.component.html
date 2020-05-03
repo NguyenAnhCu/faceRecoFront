@@ -11,20 +11,21 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="Promotion">Promotion</label>
     <div class="col-md-4">
-      <select [(ngModel)]="promotionChoisie" id="promotion"> Choisir une promotion
-        <option *ngFor="let promotion of this.promotions">
+      <select [(ngModel)]="promotionChoisie" (ngModelChange)="findStudents()" id="promotion"> Choisir une promotion
+        <option [value]="promotion.getId()" *ngFor="let promotion of this.promotions">
           {{promotion.getWording()}}
         </option>
       </select>
     </div>
   </div>
 
-
-  <h2> {{promotionChoisie}}</h2>
   <div class="row">
     <div class = "col-sm-12 col-md-12 col-lg-12">
       <ul>
-        <li *ngFor="let student of this.students">{{ student.getNumberE() }} {{student.getFirstname()}} {{student.getLastname()}} </li>
+        <li *ngFor="let student of this.students">
+          {{ student.getNumber()}} {{student.getLastName()}} {{student.getFirstName()}} {{student.getGroup().getWording()}}
+          {{student.getGroup().getPromotion().getWording()}}
+        </li>
       </ul>
     </div>
   </div>

@@ -1,12 +1,18 @@
 import {Group} from './group';
 
+export interface PromotionDetails {
+  id: number;
+  wording: string;
+}
+
 export class Promotion {
-  constructor(private wording: string, private groups: Group[]) {
+  constructor(private id: number, private wording: string) {
   }
-  getWording(): string{
+  getId(): number {
+    return this.id;
+  }
+  getWording(): string {
     return this.wording;
   }
-  getGroups(): Group[] {
-    return this.groups;
-  }
+
 }

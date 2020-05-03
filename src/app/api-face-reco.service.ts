@@ -1,28 +1,47 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Group, GroupDetails} from './group';
+import {Promotion, PromotionDetails} from './promotion';
+import {Student, StudentDetails} from './student';
+import {Timesheet, TimesheetDetails} from './timesheet';
 
 const url = 'http://localhost:8080/api/';
-
+const httpOption = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: 'Basic ' + btoa('admin:admin')
+  })
+};
 @Injectable({
   providedIn: 'root'
 })
 export class ApiFaceRecoService {
-
   constructor(private httpClient: HttpClient ) { }
 
-  getAllStudents(): Observable<any> {
-    return this.httpClient.get<any>(url + 'student');
+  getAllPromotions(): Observable<PromotionDetails[]> {
+    return this.httpClient.get<PromotionDetails[]>(url + 'promotion', httpOption);
   }
-  getAllPromotions(): Observable<any> {
-    return this.httpClient.get<any>(url + 'promotion');
+  getAllGroups(): Observable<GroupDetails[]> {
+    return this.httpClient.get<GroupDetails[]>(url + 'group', httpOption);
   }
-  getAllGroups(): Observable<any> {
-    return this.httpClient.get<any>(url + 'group');
+  getStudentByGroup(group: string): Observable<StudentDetails[]> {
+    return this.httpClient.get<StudentDetails[]>(url + 'student/group/' + group, httpOption);
   }
-
+  getStudentByPromotion(promotion: string): Observable<StudentDetails[]> {
+    return this.httpClient.get<StudentDetails[]>(url + 'student/promotion/' + promotion, httpOption);
+  }
+  getAllTimeSheet(): Observable<TimesheetDetails[]> {
+    return this.httpClient.get<TimesheetDetails[]>(url + 'timesheet', httpOption);
+  }
+  getPromotionById(id: string): Observable<PromotionDetails> {
+    return this.httpClient.get<PromotionDetails>(url + 'promotion/' + id, httpOption);
+  }
+  getGroupById(id: string): Observable<GroupDetails> {
+    return this.httpClient.get<GroupDetails>(url + 'group/' + id, httpOption);
+  }
   postStudent(student): Observable<any> {
-    return this.httpClient.post(url + 'student', student);
+    return this.httpClient.post(url + 'student', student, httpOption);
   }
 
 

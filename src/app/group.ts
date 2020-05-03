@@ -1,12 +1,21 @@
-import {Promotion} from "./promotion";
+import {Promotion, PromotionDetails} from './promotion';
 
+export interface GroupDetails {
+  id: number;
+  wording: string;
+  promotion: PromotionDetails;
+}
 export class Group {
-  constructor(private wording: string, private promotion: Promotion) {
+  constructor(private id: number, private wording: string, private promotion: Promotion) {
   }
-  getWording(): string{
+  getId(): number {
+    return this.id;
+  }
+  getWording(): string {
     return this.wording;
   }
   getPromotion(): Promotion {
     return this.promotion;
   }
 }
+

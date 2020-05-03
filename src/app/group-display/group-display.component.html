@@ -9,22 +9,23 @@
   <h1>Liste des étudiants en fonction de leur groupe</h1>
 
   <div class="form-group">
-    <label class="col-md-4 control-label" for="group">Promotion</label>
+    <label class="col-md-4 control-label" for="group">Groupe </label>
     <div class="col-md-4">
-      <select [(ngModel)]="groupChoisi" id="group"> Choisir un groupe
-        <option *ngFor="let group of this.groups">
-          {{groupChoisi.getPromotion()}}
+      <select [(ngModel)]="groupChoisi" (ngModelChange)="findStudents()" id="group"> Choisir un groupe
+        <option [value]="group.getId()" *ngFor="let group of this.groups">
+          {{group.getWording()}}
         </option>
       </select>
     </div>
   </div>
 
-
-  <h2> {{groupChoisi}}</h2>
   <div class="row">
     <div class = "col-sm-12 col-md-12 col-lg-12">
       <ul>
-        <li *ngFor="let student of this.students">{{ student.getNumberE() }} {{student.getFirstname()}} {{student.getLastname()}} </li>
+        <li *ngFor="let student of this.students">
+          {{student.getNumber()}} {{student.getFirstName()}} {{student.getLastName()}} {{student.getGroup().getWording()}}
+          {{student.getGroup().getPromotion().getWording()}}
+        </li>
       </ul>
     </div>
   </div>

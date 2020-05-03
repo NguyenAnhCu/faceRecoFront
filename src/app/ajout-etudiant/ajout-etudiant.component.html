@@ -20,25 +20,25 @@
 
       <!-- Text Nom-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="First_Name">Nom</label>
+        <label class="col-md-4 control-label" for="nomE">Nom</label>
         <div class="col-md-4">
-          <input [(ngModel)]="nomEtud" id="First_Name" name="First Name" type="text" placeholder="Entrez votre nom" class="form-control input-md" required="">
+          <input [(ngModel)]="nomEtud" id="nomE" name="nomE" type="text" placeholder="Entrez votre nom" class="form-control input-md" required="">
         </div>
       </div>
 
-      <!-- Text prenom-->
+      <!-- Text prenom -->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="Last_Name">Prénom</label>
+        <label class="col-md-4 control-label" for="prenom">Prénom : </label>
         <div class="col-md-4">
-          <input [(ngModel)]="prenomEtud" id="Last_Name" name="Last Name" type="text" placeholder="Entrez votre prénom" class="form-control input-md" required="">
+          <input [(ngModel)]="prenomEtud" id="prenom" name="prenom" type="text" placeholder="Entrez votre nom" class="form-control input-md" required="">
         </div>
       </div>
 
       <div class="form-group">
         <label class="col-md-4 control-label" for="Promotion">Promotion</label>
         <div class="col-md-4">
-          <select [(ngModel)]="promotionChoisie" id="promotion">
-            <option *ngFor="let promotion of this.promotions">
+          <select [(ngModel)]="promotionId" (ngModelChange)="findGroups()" id="promotion" name="promotion"> Choisir une promotion
+            <option [value]="promotion.getId()" *ngFor="let promotion of this.promotions">
               {{promotion.getWording()}}
             </option>
           </select>
@@ -48,13 +48,18 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="Groupe">Groupe</label>
         <div class="col-md-4">
-          <select [(ngModel)]="groupChoisi" id="Groupe">
-            <option *ngFor="let group of this.groups">
+          <select [(ngModel)]="groupChoisi" id="Groupe" name="Groupe">
+            <option [value]="group.getId()" *ngFor="let group of this.groupsChoisis">
               {{group.getWording()}}
             </option>
           </select>
         </div>
       </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Ajouter une photo </label>
+      </div>
+
 
       <!-- Button (Double) -->
       <div class="form-group">
