@@ -1,0 +1,37 @@
+<head>
+  <title>Créer Etudiant</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div class="container">
+  <form #studentForm="ngForm" (ngSubmit)="addPhoto()" class="form-horizontal">
+    <fieldset>
+      <h3 style="text-align:center">Ajouter une photo à un étudiant </h3>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Id_Student">Numéro d'Étudiant</label>
+        <div class="col-md-4">
+          <input [(ngModel)]="numeroEtud" id="Id_Student" name="Id_Student" type="text" placeholder="Entrez le numéro d'Étudiant" class="form-control input-md" required="">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" >Sélectionner une photo</label>
+        <input #imageInput type = "file" accept="image/png, image/gif, image/jpeg" (change)="onFileSelected($event)">
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+        <div class="col-md-8">
+          <button id="button1id" name="button1id" class="btn btn-success">Valider</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+</body>
+

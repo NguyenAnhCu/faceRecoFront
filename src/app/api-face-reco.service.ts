@@ -40,9 +40,13 @@ export class ApiFaceRecoService {
   getGroupById(id: string): Observable<GroupDetails> {
     return this.httpClient.get<GroupDetails>(url + 'group/' + id, httpOption);
   }
-  postStudent(student): Observable<any> {
-    return this.httpClient.post(url + 'student', student, httpOption);
+  postStudent(student) {
+    return this.httpClient.post<StudentDetails>(url + 'student', student, httpOption);
   }
-
-
+  addPhotoStudent(photo, id) {
+    return this.httpClient.post( url  + 'student/' + id + '/photo', photo, httpOption);
+  }
+  recognition(photo, id) {
+    return this.httpClient.post(url + 'timesheet/ ' + id + '/recognition', photo, httpOption);
+  }
 }

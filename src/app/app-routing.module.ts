@@ -6,13 +6,15 @@ import {TimesheetDisplayComponent} from './timesheet-display/timesheet-display.c
 import {RecongnizeStudentComponent} from './recongnize-student/recongnize-student.component';
 import {PromotionDisplayComponent} from './promotion-display/promotion-display.component';
 import {GroupDisplayComponent} from './group-display/group-display.component';
+import {AddPhotoStudentComponent} from './add-photo-student/add-photo-student.component';
 
 const routes: Routes = [
   {path: 'studentForm', component: AjoutEtudiantComponent},
   {path: 'timesheets', component: TimesheetDisplayComponent},
   {path: 'recognition', component: RecongnizeStudentComponent},
   {path: 'promotion', component: PromotionDisplayComponent},
-  {path: 'group', component: GroupDisplayComponent}];
+  {path: 'group', component: GroupDisplayComponent},
+  {path: 'addPhoto', component: AddPhotoStudentComponent}];
 
 @NgModule({
   declarations: [],

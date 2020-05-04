@@ -21,6 +21,7 @@ export class AjoutEtudiantComponent implements OnInit {
   groupChoisi: string;
   promotionId: string;
   promotionChoisie: Promotion;
+  selectedImage = null;
 
   constructor(private apiFaceRecoServ: ApiFaceRecoService) { }
 
@@ -42,16 +43,24 @@ export class AjoutEtudiantComponent implements OnInit {
     this.apiFaceRecoServ.getGroupById(this.groupChoisi).subscribe(data => {
       const group = new Group(data.id, data.wording, this.promotionChoisie);
       const student = new Student ((Number(this.numeroEtud)), this.nomEtud, this.prenomEtud, group);
-      this.apiFaceRecoServ.postStudent(student).subscribe(d =>{
+      this.apiFaceRecoServ.postStudent(student).subscribe(d => {
         this.apiFaceRecoServ.postStudent(student);
-        console.log('Etudiant ajouté')
+        console.log('Etudiant ajouté : ');
+        this.addPhoto(student.getNumber());
         studentForm.resetForm();
       });
     });
   }
+  private addPhoto(idEtud) {
+    if (this.selectedImage) {
+      this.apiFaceRecoServ.addPhotoStudent(this.selectedImage, idEtud).subscribe(data => {
+        console.log('Photo ajoutée');
+      });
+    }
+  }
 
   findGroups() {
-    this.apiFaceRecoServ.getPromotionById(this.promotionId).subscribe(data =>{
+    this.apiFaceRecoServ.getPromotionById(this.promotionId).subscribe(data => {
       this.promotionChoisie = new Promotion(data.id, data.wording);
       this.groupsChoisis.splice(0, this.groupsChoisis.length);
       this.groups.forEach((e) => {
@@ -60,6 +69,11 @@ export class AjoutEtudiantComponent implements OnInit {
         }
       });
     });
+  }
+
+  onFileSelected(event) {
+    this.selectedImage = event.target.files[0];
+    console.log(event);
   }
 
   resetForm(studentForm: NgForm) {

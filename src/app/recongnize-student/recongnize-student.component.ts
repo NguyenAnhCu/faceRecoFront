@@ -1,6 +1,10 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-
+import {ApiFaceRecoService} from '../api-face-reco.service';
+import {Timesheet} from '../timesheet';
+import {Presence} from '../presence';
+import {Promotion} from '../promotion';
+import {Group} from '../group';
+import {Student} from '../student';
 
 @Component({
   selector: 'app-recongnize-student',
@@ -9,9 +13,11 @@ import {HttpClientModule} from '@angular/common/http';
 })
 export class RecongnizeStudentComponent implements OnInit {
 
+  public timesheets: Timesheet[] = [];
+  public timesheetId: string;
   public captures: Array<any>;
   public camOpen: boolean;
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private apiFaceRecoService: ApiFaceRecoService) {
     this.captures = [];
     this.camOpen = false;
   }
@@ -33,7 +39,20 @@ export class RecongnizeStudentComponent implements OnInit {
 
 
   ngOnInit() {
+    this.apiFaceRecoService.getAllTimeSheet().subscribe( data => {
+      data.forEach( (t) => {
+        const precenses: Presence[] = [];
+        t.presence.forEach((e) => {
+          const promo = new Promotion(e.student.group.promotion.id, e.student.group.promotion.wording);
+          const group = new Group(e.student.group.id, e.student.group.wording, promo);
+          const student = new Student(e.student.number, e.student.lastName, e.student.firstName, group);
+          precenses.push(new Presence(e.present, student));
+        });
+        this.timesheets.push(new Timesheet(t.id, t.date, precenses));
+      });
+    });
   }
+
   onFileSelected(event) {
     this.selectedImage = event.target.files[0];
     console.log(event);
@@ -75,6 +94,10 @@ export class RecongnizeStudentComponent implements OnInit {
   handleError(error) {
     console.log('Error: ', error);
   }
-
-
+  recognizeStudent() {
+    console.log(this.timesheetId);
+    this.apiFaceRecoService.recognition(this.selectedImage, this.timesheetId).subscribe( data => {
+      console.log(data);
+    });
+  }
 }

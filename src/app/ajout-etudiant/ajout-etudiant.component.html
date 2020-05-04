@@ -57,7 +57,12 @@
       </div>
 
       <div class="form-group">
-        <label class="col-md-4 control-label">Ajouter une photo </label>
+        <label class="col-md-4 control-label" >Sélectionner une photo</label>
+        <input type = "file" (change)="onFileSelected($event)">
+      </div>
+
+      <div class="form-group">
+        <a> Les fichiers doivent avoir les extensions suivantes : gif, jpeg, png</a>
       </div>
 
 

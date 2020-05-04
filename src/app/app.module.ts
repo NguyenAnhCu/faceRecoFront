@@ -11,6 +11,7 @@ import { RecongnizeStudentComponent } from './recongnize-student/recongnize-stud
 import { PromotionDisplayComponent } from './promotion-display/promotion-display.component';
 import { GroupDisplayComponent } from './group-display/group-display.component';
 import {AjoutEtudiantComponent} from './ajout-etudiant/ajout-etudiant.component';
+import { AddPhotoStudentComponent } from './add-photo-student/add-photo-student.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {AjoutEtudiantComponent} from './ajout-etudiant/ajout-etudiant.component'
     TimesheetDisplayComponent,
     RecongnizeStudentComponent,
     PromotionDisplayComponent,
-    GroupDisplayComponent
+    GroupDisplayComponent,
+    AddPhotoStudentComponent
   ],
   imports: [
     BrowserModule,
