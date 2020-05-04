@@ -19,9 +19,9 @@
         <label class="col-md-4 control-label" >Prendre une photo avec la webcam</label>
         <button (click)="startCamera()" [hidden]="camOpen == true">Ouvrir caméra</button>
         <button id="snap" (click)="capture()" [hidden] = "camOpen == false">Prendre Photo</button>
-        <button id = "stopCam" (click)="stopCamera(constraints)" [hidden] = "camOpen == false">Arrête Caméra</button>
+        <button id = "stopCam" (click)="stopCamera(video)" [hidden] = "camOpen == false">Arrête Caméra</button>
         <div class="p-1">
-          <video #video class="vid" autoplay></video>
+          <video #video id ="video" class="vid" autoplay></video>
           <canvas #canvas class="vid"></canvas>
         </div>
       </div>

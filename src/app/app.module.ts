@@ -11,7 +11,6 @@ import { RecongnizeStudentComponent } from './recongnize-student/recongnize-stud
 import { PromotionDisplayComponent } from './promotion-display/promotion-display.component';
 import { GroupDisplayComponent } from './group-display/group-display.component';
 import {AjoutEtudiantComponent} from './ajout-etudiant/ajout-etudiant.component';
-import {WebcamModule} from 'ngx-webcam';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import {WebcamModule} from 'ngx-webcam';
     HttpClientModule,
     RouterModule,
     FormsModule,
-    WebcamModule
   ],
   providers: [ApiFaceRecoService],
   bootstrap: [AppComponent]

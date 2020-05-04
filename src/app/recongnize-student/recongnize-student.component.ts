@@ -21,6 +21,7 @@ export class RecongnizeStudentComponent implements OnInit {
   videoHeight = 0;
   constraints = {
     video: {
+      audio : false,
       facingMode: 'environment',
       width: { ideal: 4096 },
       height: { ideal: 2160 }
@@ -47,16 +48,20 @@ export class RecongnizeStudentComponent implements OnInit {
     }
   }
 
-  stopCamera(stream) {
-    stream.getTracks().forEach((track) => {
+  stopCamera(videoElement) {
+    const stream = videoElement.srcObject;
+    const tracks = stream.getTracks();
+
+    tracks.forEach((track) => {
       track.stop();
-      this.camOpen = false;
     });
+    videoElement.srcObject = null;
+    this.camOpen = false;
   }
 
   attachVideo(stream) {
     this.renderer.setProperty(this.videoElement.nativeElement, 'srcObject', stream);
-    this.renderer.listen(this.videoElement.nativeElement, 'play', (event) => {
+    this.renderer.listen(this.videoElement.nativeElement, 'play', () => {
       this.videoHeight = this.videoElement.nativeElement.videoHeight;
       this.videoWidth = this.videoElement.nativeElement.videoWidth;
     });
