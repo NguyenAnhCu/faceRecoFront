@@ -13,6 +13,12 @@ const httpOption = {
     Authorization: 'Basic ' + btoa('admin:admin')
   })
 };
+const httpOptionP = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/octet-stream',
+    Authorization: 'Basic ' + btoa('admin:admin')
+  })
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -44,9 +50,9 @@ export class ApiFaceRecoService {
     return this.httpClient.post<StudentDetails>(url + 'student', student, httpOption);
   }
   addPhotoStudent(photo, id) {
-    return this.httpClient.post( url  + 'student/' + id + '/photo', photo, httpOption);
+    return this.httpClient.post( url  + 'student/' + id + '/photo', photo, httpOptionP);
   }
   recognition(photo, id) {
-    return this.httpClient.post(url + 'timesheet/ ' + id + '/recognition', photo, httpOption);
+    return this.httpClient.post(url + 'timesheet/' + id + '/recognition', photo, httpOptionP);
   }
 }
