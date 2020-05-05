@@ -12,6 +12,16 @@ import { PromotionDisplayComponent } from './promotion-display/promotion-display
 import { GroupDisplayComponent } from './group-display/group-display.component';
 import {AjoutEtudiantComponent} from './ajout-etudiant/ajout-etudiant.component';
 import { AddPhotoStudentComponent } from './add-photo-student/add-photo-student.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainnavComponent } from './mainnav/mainnav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import {MatFormFieldModule, MatInputModule, MatTabsModule} from '@angular/material';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +31,9 @@ import { AddPhotoStudentComponent } from './add-photo-student/add-photo-student.
     RecongnizeStudentComponent,
     PromotionDisplayComponent,
     GroupDisplayComponent,
-    AddPhotoStudentComponent
+    AddPhotoStudentComponent,
+    MainnavComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +41,15 @@ import { AddPhotoStudentComponent } from './add-photo-student/add-photo-student.
     HttpClientModule,
     RouterModule,
     FormsModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [ApiFaceRecoService],
   bootstrap: [AppComponent]

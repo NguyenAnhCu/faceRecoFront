@@ -10,10 +10,10 @@ export interface StudentDetails {
 export class Student {
   constructor(private number: number, private lastName: string, private firstName: string, private group: Group) {
   }
-  getNumber(): number{
+  getNumber(): number {
     return this.number;
   }
-  getLastName(): string{
+  getLastName(): string {
     return this.lastName;
   }
   getFirstName(): string {
