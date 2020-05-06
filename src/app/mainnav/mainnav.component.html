@@ -5,6 +5,7 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
+      <a routerLink="/" mat-list-item>Page d'accueil</a><br>
       <a routerLink="/studentForm" mat-list-item >Ajouter Etudiant </a><br>
       <a routerLink = "/addPhoto" mat-list-item>Ajouter un Photo</a><br>
       <a routerLink="/timesheets" mat-list-item >Accéder aux feuilles de présence</a><br>
@@ -28,7 +29,7 @@
       <span>FaceReco Application</span>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center blue-grey lighten-5">
       <h1>Projet: Face Recognition</h1>
       <p>Participant: Anh, Bastien, Yaelle, Edgar, Maïmouna </p>
     </div>
