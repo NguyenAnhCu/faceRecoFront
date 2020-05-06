@@ -34,7 +34,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let timesheet of this.timesheets">
-              <th rowspan="{{timesheet.getPresence().length - 1}}" scope="rowgroup">{{timesheet.getWording()}}<br>{{timesheet.getDate()}}</th>
+              <th [attr.rowspan]=timesheet.getPresence().length -1 scope="rowgroup">{{timesheet.getWording()}}<br>{{timesheet.getDate()}}</th>
               <th *ngFor="let presence of timesheet.getPresence()" scope="row">{{presence.getStudent().getLastName()}}, {{presence.getStudent().getFirstName()}}<br>Présence: {{presence.getPresent()}}</th>
             </tr>
             </tbody>
