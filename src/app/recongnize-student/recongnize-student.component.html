@@ -14,7 +14,7 @@
         <div class="col-md-4">
           <select [(ngModel)]="timesheetId" id="timesheet" name="timesheet">
             <option [value]="timesheet.getId()" *ngFor="let timesheet of this.timesheets">
-              {{timesheet.getDate()}}
+              {{timesheet.getWording()}}
             </option>
           </select>
         </div>

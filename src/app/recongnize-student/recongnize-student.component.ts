@@ -48,7 +48,7 @@ export class RecongnizeStudentComponent implements OnInit {
           const student = new Student(e.student.number, e.student.lastName, e.student.firstName, group);
           precenses.push(new Presence(e.present, student));
         });
-        this.timesheets.push(new Timesheet(t.id, t.date, precenses));
+        this.timesheets.push(new Timesheet(t.id, t.date, t.wording, precenses));
       });
     });
   }
@@ -97,7 +97,7 @@ export class RecongnizeStudentComponent implements OnInit {
   recognizeStudent() {
     console.log(this.timesheetId);
     this.apiFaceRecoService.recognition(this.selectedImage, this.timesheetId).subscribe( data => {
-      console.log(data);
+      console.log('Eleve reconnu');
     });
   }
 }

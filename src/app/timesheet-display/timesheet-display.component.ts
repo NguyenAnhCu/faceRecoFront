@@ -26,7 +26,7 @@ export class TimesheetDisplayComponent implements OnInit {
           const student = new Student(e.student.number, e.student.lastName, e.student.firstName, group);
           precenses.push(new Presence(e.present, student));
         });
-        this.timesheets.push(new Timesheet(t.id, t.date, precenses));
+        this.timesheets.push(new Timesheet(t.id, t.date, t.wording, precenses));
       });
     });
   }
