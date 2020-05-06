@@ -15,6 +15,7 @@ export class RecongnizeStudentComponent implements OnInit {
 
   public timesheets: Timesheet[] = [];
   public timesheetId: string;
+  public student: Student;
   public captures: Array<any>;
   public camOpen: boolean;
   constructor(private renderer: Renderer2, private apiFaceRecoService: ApiFaceRecoService) {
@@ -48,7 +49,7 @@ export class RecongnizeStudentComponent implements OnInit {
           const student = new Student(e.student.number, e.student.lastName, e.student.firstName, group);
           precenses.push(new Presence(e.present, student));
         });
-        this.timesheets.push(new Timesheet(t.id, t.date, t.wording, precenses));
+        this.timesheets.push(new Timesheet(t.id, new Date(t.date), t.wording, precenses));
       });
     });
   }
@@ -95,9 +96,21 @@ export class RecongnizeStudentComponent implements OnInit {
     console.log('Error: ', error);
   }
   recognizeStudent() {
-    console.log(this.timesheetId);
     this.apiFaceRecoService.recognition(this.selectedImage, this.timesheetId).subscribe( data => {
-      console.log('Eleve reconnu');
+      if (data != null) {
+        const promo =  new Promotion(data.group.promotion.id, data.group.promotion.wording);
+        const group = new Group(data.group.id, data.group.wording, promo);
+        this.student = new Student( data.number, data.firstName, data.firstName, group);
+      } else {
+        console.log('Aucun étudiant trouvé');
+      }
     });
+  }
+
+  validateStudent() {
+
+  }
+  unvalidateStudent() {
+
   }
 }

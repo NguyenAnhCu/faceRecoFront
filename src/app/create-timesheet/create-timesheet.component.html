@@ -1,0 +1,47 @@
+<head>
+  <title>Créer Feuille de présence</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div class="container">
+  <form #timesheetForm="ngForm" (ngSubmit)="createTimesheet(timesheetForm)" class="form-horizontal">
+    <fieldset>
+      <h3 style="text-align:center">Nouvelles feuilles de présence </h3>
+
+      <div class="form-group">
+        <input [matDatepicker]="myDatepicker" name="dateT" id="date" (dateChange)="changeDate($event)">
+        <mat-datepicker-toggle [for]="myDatepicker"> </mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker [(ngModel)]="this.dateTimesheet"></mat-datepicker>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="wording">Intitule : </label>
+        <div class="col-md-4">
+          <input [(ngModel)]="wordingT" id="wording" name="wording" type="text" class="form-control input-md" required="">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Promotion">Choisir une promotion : </label>
+        <div class="col-md-4">
+          <select [(ngModel)]="promotionId" id="Promotion" name="Promotion">
+            <option [value]="promotion.getId()" *ngFor="let promotion of this.promotions">
+              {{promotion.getWording()}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+        <div class="col-md-8">
+          <button id="button1id" name="button1id" class="btn btn-success">Valider</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+</body>

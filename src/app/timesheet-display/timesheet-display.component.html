@@ -12,7 +12,7 @@
         <div class = "col-sm-12 col-md-12 col-lg-12">
           <ul>
             <li *ngFor="let timesheet of this.timesheets">
-                {{timesheet.getWording()}} le {{timesheet.getDate()}}
+                {{timesheet.getWording()}} le {{timesheet.getDate().toLocaleString()}}
                 <ul>
                   <li *ngFor="let presence of timesheet.getPresence()" >
                     {{presence.getPresent()}} {{presence.getStudent().getFirstName()}} {{presence.getStudent().getLastName()}}

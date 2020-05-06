@@ -45,6 +45,20 @@
           <button id="button1id" name="button1id" class="btn btn-success">Valider</button>
         </div>
       </div>
+
+      <div class="form-group" *ngIf="student">
+        Etudiant trouvé : {{student.getNumber()}} {{student.getLastName()}} {{student.getFirstName()}} {{student.getGroup().getWording()}} {{student.getGroup().getPromotion().getWording()}}
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="button1id"></label>
+          <div class="col-md-8">
+            <button id="buttonOk" name="button1id" class="btn btn-success" (click)="validateStudent()">Valider la correspondance </button>
+            <button id="buttonNotOk" name="button2id" class="btn btn-danger" (click)="unvalidateStudent()" > Ne pas valider la corespondance </button>
+          </div>
+        </div>
+
+      </div>
+
     </fieldset>
   </form>
 </div>
