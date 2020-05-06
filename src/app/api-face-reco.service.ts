@@ -58,4 +58,7 @@ export class ApiFaceRecoService {
   postTimeSheet(timesheet) {
     return this.httpClient.post(url + 'timesheet', timesheet, httpOption);
   }
+  validateRecognition(presenceModel) {
+    return this.httpClient.post(url + 'timesheet/validatePresence', presenceModel, httpOption);
+  }
 }

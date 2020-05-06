@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {ApiFaceRecoService} from '../api-face-reco.service';
 import {Timesheet} from '../timesheet';
-import {Presence} from '../presence';
+import {Presence, PresenceModel} from '../presence';
 import {Promotion} from '../promotion';
 import {Group} from '../group';
 import {Student} from '../student';
@@ -15,6 +15,7 @@ export class RecongnizeStudentComponent implements OnInit {
 
   public timesheets: Timesheet[] = [];
   public timesheetId: string;
+  public idStudent: string;
   public student: Student;
   public captures: Array<any>;
   public camOpen: boolean;
@@ -107,10 +108,16 @@ export class RecongnizeStudentComponent implements OnInit {
     });
   }
 
-  validateStudent() {
-
+  validateStudent(id) {
+    const presenceM = new PresenceModel(Number(this.timesheetId), id, true);
+    this.apiFaceRecoService.validateRecognition(presenceM).subscribe(data => {
+      alert ('Etudiant validé');
+    });
   }
   unvalidateStudent() {
-
+    const presenceM = new PresenceModel(Number(this.timesheetId), this.student.getNumber(), false);
+    this.apiFaceRecoService.validateRecognition(presenceM).subscribe(data => {
+      alert ('Etudiant non validé');
+    });
   }
 }

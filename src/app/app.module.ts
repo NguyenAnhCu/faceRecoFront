@@ -22,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatFormFieldModule, MatInputModule, MatTabsModule} from '@angular/material';
 import { FooterComponent } from './footer/footer.component';
+import {CreateTimesheetComponent} from './create-timesheet/create-timesheet.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +35,7 @@ import { FooterComponent } from './footer/footer.component';
     AddPhotoStudentComponent,
     MainnavComponent,
     FooterComponent,
-    StudentDetailsComponent,
-    CreateTimesheetComponent,
+    CreateTimesheetComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +51,7 @@ import { FooterComponent } from './footer/footer.component';
     MatIconModule,
     MatListModule,
     MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule
+    MatInputModule
   ],
   providers: [ApiFaceRecoService],
   bootstrap: [AppComponent]

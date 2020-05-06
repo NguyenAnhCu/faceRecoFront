@@ -11,7 +11,7 @@ import {TimesheetModel} from '../timesheet';
 })
 export class CreateTimesheetComponent implements OnInit {
 
-  dateTimesheet: Date;
+  dateTimesheet: string;
   wordingT: string;
   promotionId: string;
   promotions: Promotion[] = [];
@@ -31,20 +31,21 @@ export class CreateTimesheetComponent implements OnInit {
     console.log(this.dateTimesheet);
   }
   createTimesheet(formTimesheet: NgForm) {
-    console.log(this.dateTimesheet);
-/*    current = current.replace('T', ' ');
-    current = current.split('.')[0];
+    const current = new Date();
+    this.dateTimesheet = current.toISOString();
+    this.dateTimesheet = this.dateTimesheet.replace('T', ' ');
+    this.dateTimesheet = this.dateTimesheet.split('.')[0];
     const students: number[] = [];
     this.apiFaceReco.getStudentByPromotion(this.promotionId).subscribe(data => {
       data.forEach((s) => {
         students.push(s.number);
       });
-      const timesheet: TimesheetModel = new TimesheetModel(current, this.wordingT, students);
+      const timesheet: TimesheetModel = new TimesheetModel(this.dateTimesheet, this.wordingT, students);
       this.apiFaceReco.postTimeSheet(timesheet).subscribe(res => {
         alert('Feuille de présence créee : ' + this.wordingT);
         formTimesheet.resetForm();
       });
-    });*/
+    });
   }
 
 }
