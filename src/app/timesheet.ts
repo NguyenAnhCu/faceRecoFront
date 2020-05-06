@@ -8,7 +8,7 @@ export interface TimesheetDetails {
 }
 
 export class Timesheet {
-  constructor(private id: number, private date: string, private wording: string, private presence: Presence[]) {
+  constructor(private id: number, private date: Date, private wording: string, private presence: Presence[]) {
   }
   getId(): number {
     return this.id;
@@ -16,10 +16,16 @@ export class Timesheet {
   getWording(): string {
     return this.wording;
   }
-  getDate(): string {
+  getDate(): Date {
     return this.date;
   }
   getPresence(): Presence[] {
     return this.presence;
   }
+}
+
+export class TimesheetModel {
+  constructor(private date: string, private wording: string, private student: number[]) {
+  }
+
 }

@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'promotion', component: PromotionDisplayComponent},
   {path: 'group', component: GroupDisplayComponent},
   {path: 'addPhoto', component: AddPhotoStudentComponent},
-  {path: 'student', component: StudentDetailsComponent}
+  {path: 'etudiant', component: StudentDetailsComponent}
   ];
 
 @NgModule({
