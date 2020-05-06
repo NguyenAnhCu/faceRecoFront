@@ -55,4 +55,8 @@ export class ApiFaceRecoService {
   recognition(photo, id) {
     return this.httpClient.post(url + 'timesheet/' + id + '/recognition', photo, httpOptionP);
   }
+
+  getStudentDetails(id: number): Observable<StudentDetails> {
+    return this.httpClient.get<StudentDetails>(url + 'etudiant/' + id, httpOption);
+  }
 }
