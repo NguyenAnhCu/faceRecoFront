@@ -7,7 +7,7 @@ import {RecongnizeStudentComponent} from './recongnize-student/recongnize-studen
 import {PromotionDisplayComponent} from './promotion-display/promotion-display.component';
 import {GroupDisplayComponent} from './group-display/group-display.component';
 import {AddPhotoStudentComponent} from './add-photo-student/add-photo-student.component';
-import {CreateTimesheetComponent} from './create-timesheet/create-timesheet.component';
+import {StudentDetailsComponent} from './student-details/student-details.component';
 
 const routes: Routes = [
   {path: 'studentForm', component: AjoutEtudiantComponent},
@@ -16,8 +16,10 @@ const routes: Routes = [
   {path: 'promotion', component: PromotionDisplayComponent},
   {path: 'group', component: GroupDisplayComponent},
   {path: 'addPhoto', component: AddPhotoStudentComponent},
-  {path: 'createTimeSheet', component: CreateTimesheetComponent}];
-
+  {path: 'createTimeSheet', component: CreateTimesheetComponent},
+  {path: 'addPhoto', component: AddPhotoStudentComponent},
+  {path: 'etudiant', component: StudentDetailsComponent}];
+  ];
 
 @NgModule({
   declarations: [],

@@ -22,6 +22,25 @@
           </ul>
         </div>
       </div>
+      <div class="row justify-content-center">
+        <div class = "col-auto">
+          <table class = "table table-bordered table-responsive">
+            <thead class = "thead-dark">
+            <tr>
+              <th>Évenement/ Date</th>
+              <th>Student</th>
+              <th>Présence</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let timesheet of this.timesheets">
+              <th [attr.rowspan]=timesheet.getPresence().length -1 scope="rowgroup">{{timesheet.getWording()}}<br>{{timesheet.getDate()}}</th>
+              <th *ngFor="let presence of timesheet.getPresence()" scope="row">{{presence.getStudent().getLastName()}}, {{presence.getStudent().getFirstName()}}<br>Présence: {{presence.getPresent()}}</th>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
     </fieldset>
   </form>

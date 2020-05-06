@@ -1,10 +1,12 @@
 import {Group, GroupDetails} from './group';
+import {Promotion, PromotionDetails} from './promotion';
 
 export interface StudentDetails {
   number: number;
   lastName: string;
   firstName: string;
   group: GroupDetails;
+
 }
 
 export class Student {
