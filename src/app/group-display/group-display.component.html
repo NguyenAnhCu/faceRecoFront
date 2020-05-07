@@ -33,7 +33,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let student of this.students">
-          <th>{{student.getNumber()}}</th>
+          <th [routerLink]=['/student',student.getNumber()>{{student.getNumber()}}</th>
           <th>{{student.getFirstName()}}</th>
           <th>{{student.getLastName()}}</th>
           <th>{{student.getGroup().getWording()}}</th>
