@@ -23,6 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import {MatFormFieldModule, MatInputModule, MatTabsModule} from '@angular/material';
 import { FooterComponent } from './footer/footer.component';
 import {CreateTimesheetComponent} from './create-timesheet/create-timesheet.component';
+import {StudentDetailsComponent} from './student-details/student-details.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {CreateTimesheetComponent} from './create-timesheet/create-timesheet.comp
     AddPhotoStudentComponent,
     MainnavComponent,
     FooterComponent,
-    CreateTimesheetComponent
+    CreateTimesheetComponent,
+    StudentDetailsComponent
   ],
   imports: [
     BrowserModule,
