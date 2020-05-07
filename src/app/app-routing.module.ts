@@ -7,7 +7,6 @@ import {RecongnizeStudentComponent} from './recongnize-student/recongnize-studen
 import {PromotionDisplayComponent} from './promotion-display/promotion-display.component';
 import {GroupDisplayComponent} from './group-display/group-display.component';
 import {AddPhotoStudentComponent} from './add-photo-student/add-photo-student.component';
-import {StudentDetailsComponent} from './student-details/student-details.component';
 import {CreateTimesheetComponent} from './create-timesheet/create-timesheet.component';
 
 const routes: Routes = [
@@ -17,7 +16,6 @@ const routes: Routes = [
   {path: 'promotion', component: PromotionDisplayComponent},
   {path: 'group', component: GroupDisplayComponent},
   {path: 'addPhoto', component: AddPhotoStudentComponent},
-  {path: 'student', component: StudentDetailsComponent},
   {path: 'createTimeSheet', component: CreateTimesheetComponent}
   ];
 

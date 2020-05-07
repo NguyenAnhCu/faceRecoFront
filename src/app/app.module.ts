@@ -22,7 +22,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatFormFieldModule, MatInputModule, MatTabsModule} from '@angular/material';
 import {CreateTimesheetComponent} from './create-timesheet/create-timesheet.component';
-import {StudentDetailsComponent} from './student-details/student-details.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {
   MAT_DATE_FORMATS,
@@ -31,7 +30,7 @@ import {
   MatDateFormats,
   MatNativeDateModule
 } from '@angular/material/core';
-export const MY_FORMAT: MatDateFormats = {
+export const MY_DATE_FORMAT: MatDateFormats = {
   parse: {
     dateInput: 'DD/MM/YYYY',
   },
@@ -53,8 +52,7 @@ export const MY_FORMAT: MatDateFormats = {
     GroupDisplayComponent,
     AddPhotoStudentComponent,
     MainnavComponent,
-    CreateTimesheetComponent,
-    StudentDetailsComponent
+    CreateTimesheetComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +74,7 @@ export const MY_FORMAT: MatDateFormats = {
   ],
   providers: [ApiFaceRecoService,
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMAT }],
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT }],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

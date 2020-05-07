@@ -29,8 +29,10 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let presence of timesheet.getPresence()">
-                  <th>{{presence.getPresent()}}</th>
-                  <th><a routerLink="/student/{{presence.getStudent().getNumber()}}">{{presence.getStudent().getNumber()}}</a></th>
+                  <th *ngIf="presence.getPresent(); then present else notPresent"></th>
+                  <ng-template #present> <th style="background: green">Present </th> </ng-template>
+                  <ng-template #notPresent><th style="background: red">Absent</th></ng-template>
+                  <th>{{presence.getStudent().getNumber()}}</th>
                   <th>{{presence.getStudent().getFirstName()}}</th>
                   <th>{{presence.getStudent().getLastName()}}</th>
                   <th>{{presence.getStudent().getGroup().getWording()}}</th>

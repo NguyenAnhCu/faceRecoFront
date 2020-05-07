@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Group, GroupDetails} from './group';
-import {Promotion, PromotionDetails} from './promotion';
-import {Student, StudentDetails} from './student';
-import {Timesheet, TimesheetDetails} from './timesheet';
+import {GroupDetails} from './group';
+import {PromotionDetails} from './promotion';
+import {StudentDetails} from './student';
+import {TimesheetDetails} from './timesheet';
 
 const url = 'http://localhost:8080/api/';
 const httpOption = {
