@@ -7,39 +7,43 @@
   <form class="form-horizontal">
     <fieldset>
       <h3 style="text-align:center">Feuilles de présence </h3>
+      <br>
 
       <div class="row">
         <div class = "col-sm-12 col-md-12 col-lg-12">
           <ul>
             <li *ngFor="let timesheet of this.timesheets">
                 {{timesheet.getWording()}} le {{timesheet.getDate().toLocaleString().split( ' ')[0]}}
-                <ul>
-                  <li *ngFor="let presence of timesheet.getPresence()" >
-                    {{presence.getPresent()}} {{presence.getStudent().getFirstName()}} {{presence.getStudent().getLastName()}}
-                  </li>
-                </ul>
+              <div class="row justify-content-center">
+                <div class = "col-auto">
+                   <table class = "table table-bordered table-responsive">
+                   <thead class = "thead-dark">
+                  <tr>
+                   <th>Présent </th>
+                   <th>Numéro étudiant</th>
+                   <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Groupe</th>
+                    <th>Promotion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let presence of timesheet.getPresence()">
+                  <th>{{presence.getPresent()}}</th>
+                  <th><a routerLink="/student/{{presence.getStudent().getNumber()}}">{{presence.getStudent().getNumber()}}</a></th>
+                  <th>{{presence.getStudent().getFirstName()}}</th>
+                  <th>{{presence.getStudent().getLastName()}}</th>
+                  <th>{{presence.getStudent().getGroup().getWording()}}</th>
+                  <th>{{presence.getStudent().getGroup().getPromotion().getWording()}}</th>
+                </tr>
+                </tbody>
+              </table>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class = "col-auto">
-          <table class = "table table-bordered table-responsive">
-            <thead class = "thead-dark">
-            <tr>
-              <th>Évenement/ Date</th>
-              <th>Student</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let timesheet of this.timesheets">
-              <th *ngFor="let presence of timesheet.getPresence()" scope="row">{{presence.getStudent().getLastName()}}, {{presence.getStudent().getFirstName()}}<br>Présence: {{presence.getPresent()}}</th>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
     </fieldset>
   </form>
 </div>
