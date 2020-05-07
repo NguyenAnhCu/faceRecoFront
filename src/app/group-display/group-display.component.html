@@ -18,15 +18,29 @@
       </select>
     </div>
   </div>
-
-  <div class="row">
-    <div class = "col-sm-12 col-md-12 col-lg-12">
-      <ul>
-        <li *ngFor="let student of this.students">
-          {{student.getNumber()}} {{student.getFirstName()}} {{student.getLastName()}} {{student.getGroup().getWording()}}
-          {{student.getGroup().getPromotion().getWording()}}
-        </li>
-      </ul>
+  <hr>
+  <div class="row justify-content-center">
+    <div class = "col-auto">
+      <table class = "table table-bordered table-responsive">
+        <thead class = "mat-tab-group-inverted-header">
+        <tr>
+          <th>Numéro étudiant</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Groupe</th>
+          <th>Promotion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let student of this.students">
+          <th>{{student.getNumber()}}</th>
+          <th>{{student.getFirstName()}}</th>
+          <th>{{student.getLastName()}}</th>
+          <th>{{student.getGroup().getWording()}}</th>
+          <th>{{student.getGroup().getPromotion().getWording()}}</th>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 

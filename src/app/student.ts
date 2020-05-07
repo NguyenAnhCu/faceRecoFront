@@ -1,19 +1,21 @@
 import {Group, GroupDetails} from './group';
+import {Promotion, PromotionDetails} from './promotion';
 
 export interface StudentDetails {
   number: number;
   lastName: string;
   firstName: string;
   group: GroupDetails;
+
 }
 
 export class Student {
   constructor(private number: number, private lastName: string, private firstName: string, private group: Group) {
   }
-  getNumber(): number{
+  getNumber(): number {
     return this.number;
   }
-  getLastName(): string{
+  getLastName(): string {
     return this.lastName;
   }
   getFirstName(): string {

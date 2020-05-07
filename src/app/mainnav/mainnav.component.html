@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a routerLink="/" mat-list-item>Page d'accueil</a><br>
+      <a routerLink="/studentForm" mat-list-item routerLinkActive="active-list-item">Ajouter un étudiant </a><br>
+      <a routerLink = "/addPhoto" mat-list-item routerLinkActive="active-list-item">Ajouter une photo à un étudiant</a><br>
+      <a routerLink="createTimeSheet" mat-list-item routerLinkActive="active-list-item">Créer une feuille de présence </a><br>
+      <a routerLink="/timesheets" mat-list-item routerLinkActive="active-list-item">Accéder aux feuilles de présence</a><br>
+      <a routerLink="/recognition" mat-list-item routerLinkActive="active-list-item">Reconnaître un étudiant</a><br>
+      <hr>
+      <mat-toolbar>Liste des étudiants</mat-toolbar>
+      <a routerLink="/promotion" mat-list-item routerLinkActive="active-list-item">Par Promotion</a><br>
+      <a routerLink="/group" mat-list-item routerLinkActive="active-list-item">Par Groupe</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>FaceReco Application</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div class="jumbotron text-center blue-grey lighten-5">
+      <h1>Projet: Face Recognition</h1>
+      <p>Participant: Anh, Bastien, Yaelle, Edgar, Maïmouna </p>
+    </div>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

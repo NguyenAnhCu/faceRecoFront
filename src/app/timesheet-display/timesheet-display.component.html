@@ -3,26 +3,49 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container-fluid">
   <form class="form-horizontal">
     <fieldset>
       <h3 style="text-align:center">Feuilles de présence </h3>
+      <br>
 
       <div class="row">
         <div class = "col-sm-12 col-md-12 col-lg-12">
           <ul>
             <li *ngFor="let timesheet of this.timesheets">
-                {{timesheet.getWording()}} le {{timesheet.getDate()}}
-                <ul>
-                  <li *ngFor="let presence of timesheet.getPresence()" >
-                    {{presence.getPresent()}} {{presence.getStudent().getFirstName()}} {{presence.getStudent().getLastName()}}
-                  </li>
-                </ul>
+                {{timesheet.getWording()}} le {{timesheet.getDate().toLocaleString().split( ' ')[0]}}
+              <div class="row justify-content-center">
+                <div class = "col-auto">
+                   <table class = "table table-bordered table-responsive">
+                   <thead class = "thead-dark">
+                  <tr>
+                   <th>Présent </th>
+                   <th>Numéro étudiant</th>
+                   <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Groupe</th>
+                    <th>Promotion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let presence of timesheet.getPresence()">
+                  <th *ngIf="presence.getPresent(); then present else notPresent"></th>
+                  <ng-template #present> <th style="background: green">Present </th> </ng-template>
+                  <ng-template #notPresent><th style="background: red">Absent</th></ng-template>
+                  <th>{{presence.getStudent().getNumber()}}</th>
+                  <th>{{presence.getStudent().getFirstName()}}</th>
+                  <th>{{presence.getStudent().getLastName()}}</th>
+                  <th>{{presence.getStudent().getGroup().getWording()}}</th>
+                  <th>{{presence.getStudent().getGroup().getPromotion().getWording()}}</th>
+                </tr>
+                </tbody>
+              </table>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
       </div>
-
     </fieldset>
   </form>
 </div>

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Group, GroupDetails} from './group';
-import {Promotion, PromotionDetails} from './promotion';
-import {Student, StudentDetails} from './student';
-import {Timesheet, TimesheetDetails} from './timesheet';
+import {GroupDetails} from './group';
+import {PromotionDetails} from './promotion';
+import {StudentDetails} from './student';
+import {TimesheetDetails} from './timesheet';
 
 const url = 'http://localhost:8080/api/';
 const httpOption = {
@@ -52,7 +52,17 @@ export class ApiFaceRecoService {
   addPhotoStudent(photo, id) {
     return this.httpClient.post( url  + 'student/' + id + '/photo', photo, httpOptionP);
   }
-  recognition(photo, id) {
-    return this.httpClient.post(url + 'timesheet/' + id + '/recognition', photo, httpOptionP);
+  recognition(photo, id): Observable<StudentDetails> {
+    return this.httpClient.post<StudentDetails>(url + 'timesheet/' + id + '/recognition', photo, httpOptionP);
+  }
+  postTimeSheet(timesheet) {
+    return this.httpClient.post(url + 'timesheet', timesheet, httpOption);
+  }
+  validateRecognition(presenceModel) {
+    return this.httpClient.post(url + 'timesheet/validatePresence', presenceModel, httpOption);
+  }
+
+  getStudentDetails(id: number): Observable<StudentDetails> {
+    return this.httpClient.get<StudentDetails>(url + 'etudiant/' + id, httpOption);
   }
 }

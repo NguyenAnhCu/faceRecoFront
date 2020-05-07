@@ -1,8 +1,9 @@
 .container {
   border-radius: 5px;
-  background-color: lightgrey;
+  background-color: #E9EBEE;
   padding: 20px;
   margin: 2%;
+  width: 100%;
 }
 input[type=text], select, textarea{
   width: 100%;

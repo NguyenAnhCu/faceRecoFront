@@ -1,0 +1,28 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.active-list-item {
+  color: white !important; /* Note: You could also use a custom theme */
+  background-color: #6A1B9A;
+}
+
+.mat-list-item:hover {
+  background-color: #6A1B9A;
+  color:white;
+}
+
+

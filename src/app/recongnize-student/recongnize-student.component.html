@@ -3,7 +3,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-)
 <body>
 <div class="container">
   <form #recognizeForm="ngForm" (ngSubmit)="recognizeStudent()" class="form-horizontal">
@@ -31,21 +30,37 @@
       </div>
 
       <div class="form-group">
-        <label class="col-md-4 control-label" >Prendre une photo avec la webcam</label>
-        <button (click)="startCamera()" [hidden]="camOpen == true">Ouvrir caméra</button>
-        <button id="snap" (click)="capture()" [hidden] = "camOpen == false">Prendre Photo</button>
-        <button id = "stopCam" (click)="stopCamera(video)" [hidden] = "camOpen == false">Arrête Caméra</button>
-        <div class="p-1">
-          <video #video id ="video" class="vid" autoplay></video>
-          <canvas #canvas class="vid"></canvas>
-        </div>
-      </div>
-      <div class="form-group">
         <label class="col-md-4 control-label" for="button1id"></label>
         <div class="col-md-8">
           <button id="button1id" name="button1id" class="btn btn-success">Valider</button>
         </div>
       </div>
+
+      <div class="form-group" *ngIf="student">
+        Etudiant trouvé : {{student.getNumber()}} {{student.getLastName()}} {{student.getFirstName()}} {{student.getGroup().getWording()}} {{student.getGroup().getPromotion().getWording()}}
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="button1id"></label>
+          <div class="col-md-8">
+            <button id="buttonOk" name="button1id" class="btn btn-success" (click)="validateStudent(student.getNumber())">Valider la correspondance </button>
+            <button id="buttonNotOk" name="button2id" class="btn btn-danger" (click)="unvalidateStudent()" > Ne pas valider la corespondance </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <p> Si vous ne souhaitez pas utiliser la reconnaissance faciale: entrez le numéro étudiant</p>
+        <label class="col-md-4 control-label" for="numero_etud">Numéro étudiant</label>
+        <div class="col-md-4">
+          <input [(ngModel)]="this.idStudent" id="numero_etud" name="numero_etud" type="text" class="form-control input-md" required="">
+        </div>
+
+        <label class="col-md-4 control-label" for="button1id"></label>
+        <div class="col-md-8">
+          <button id="buttonValidate" name="buttonV" class="btn btn-success" (click)="validateStudent(this.idStudent)">Valider l'étudiant </button>
+        </div>
+      </div>
+
     </fieldset>
   </form>
 </div>

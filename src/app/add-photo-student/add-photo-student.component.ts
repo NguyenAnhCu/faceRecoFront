@@ -7,7 +7,7 @@ import {ApiFaceRecoService} from '../api-face-reco.service';
   styleUrls: ['./add-photo-student.component.css']
 })
 export class AddPhotoStudentComponent implements OnInit {
-  numeroEtud: string;
+  numberEtud: string;
   selectedImage = null;
 
   constructor(private apiFaceRecoService: ApiFaceRecoService) { }
@@ -17,12 +17,11 @@ export class AddPhotoStudentComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedImage = event.target.files[0];
-    console.log(event);
   }
   addPhoto() {
     console.log(this.selectedImage);
-    this.apiFaceRecoService.addPhotoStudent(this.selectedImage, this.numeroEtud).subscribe(data => {
-      console.log('Photo ajoutée');
+    this.apiFaceRecoService.addPhotoStudent(this.selectedImage, this.numberEtud).subscribe(data => {
+      alert ('Photo ajoutée pour l\'étudiant : ' + this.numberEtud);
     });
   }
 

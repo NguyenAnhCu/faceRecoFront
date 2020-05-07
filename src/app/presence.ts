@@ -15,3 +15,8 @@ export class Presence {
     return this.student;
   }
 }
+
+export class PresenceModel {
+  constructor(private timesheet: number, private student: number, private present: boolean) {
+  }
+}
