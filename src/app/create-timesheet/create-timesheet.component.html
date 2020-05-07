@@ -18,6 +18,14 @@
       </div>
 
       <div class="form-group">
+        <label class="col-md-4 control-label" for="dateP">Choisissez une date : </label>
+          <input [matDatepicker]="basicDatepicker" id="dateP" name="dateP" [(ngModel)]="dateTimesheet">
+          <mat-datepicker-toggle [for]="basicDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #basicDatepicker></mat-datepicker>
+      </div>
+
+
+      <div class="form-group">
         <label class="col-md-4 control-label" for="Promotion">Choisir une promotion : </label>
         <div class="col-md-4">
           <select [(ngModel)]="promotionId" id="Promotion" name="Promotion">

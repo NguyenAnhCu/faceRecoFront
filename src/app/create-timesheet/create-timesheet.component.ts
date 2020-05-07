@@ -11,12 +11,13 @@ import {TimesheetModel} from '../timesheet';
 })
 export class CreateTimesheetComponent implements OnInit {
 
-  dateTimesheet: string;
+  dateTimesheet = new Date();
   wordingT: string;
   promotionId: string;
   promotions: Promotion[] = [];
 
-  constructor(private apiFaceReco: ApiFaceRecoService) { }
+  constructor(private apiFaceReco: ApiFaceRecoService) {}
+
 
   ngOnInit() {
     this.apiFaceReco.getAllPromotions().subscribe(data => {
@@ -25,26 +26,24 @@ export class CreateTimesheetComponent implements OnInit {
       });
     });
   }
-  changeDate(event) {
-    const dateT = event.target.value;
-    this.dateTimesheet = dateT.toISOString();
-    console.log(this.dateTimesheet);
-  }
+
   createTimesheet(formTimesheet: NgForm) {
-    const current = new Date();
-    this.dateTimesheet = current.toISOString();
-    this.dateTimesheet = this.dateTimesheet.replace('T', ' ');
-    this.dateTimesheet = this.dateTimesheet.split('.')[0];
-    const students: number[] = [];
-    this.apiFaceReco.getStudentByPromotion(this.promotionId).subscribe(data => {
-      data.forEach((s) => {
-        students.push(s.number);
-      });
-      const timesheet: TimesheetModel = new TimesheetModel(this.dateTimesheet, this.wordingT, students);
-      this.apiFaceReco.postTimeSheet(timesheet).subscribe(res => {
-        alert('Feuille de présence créee : ' + this.wordingT);
-        formTimesheet.resetForm();
-      });
+   const dateT = this.dateTimesheet.toLocaleString();
+   const dates = dateT.split('/');
+   const year = dates[2].split(' ')[0];
+   const month = dates [1];
+   const day = dates [0];
+   const dateComplete = year + '-' + month + '-' + day + ' 00:00:00';
+   const students: number[] = [];
+   this.apiFaceReco.getStudentByPromotion(this.promotionId).subscribe(data => {
+     data.forEach((s) => {
+       students.push(s.number);
+     });
+     const timesheet: TimesheetModel = new TimesheetModel(dateComplete, this.wordingT, students);
+     this.apiFaceReco.postTimeSheet(timesheet).subscribe(res => {
+       alert('Feuille de présence créée : ' + this.wordingT);
+       formTimesheet.resetForm();
+     });
     });
   }
 
