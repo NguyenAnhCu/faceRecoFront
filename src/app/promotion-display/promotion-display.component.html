@@ -1,4 +1,4 @@
-<head>
+<head xmlns:component="http://www.w3.org/1999/xhtml" xmlns:component="http://www.w3.org/1999/xhtml">
   <title>Student List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let student of this.students">
-          <th>{{student.getNumber()}}</th>
+          <th><a routerLink="/student/{{student.getNumber()}}">{{student.getNumber()}}</a></th>
           <th>{{student.getFirstName()}}</th>
           <th>{{student.getLastName()}}</th>
           <th>{{student.getGroup().getWording()}}</th>
