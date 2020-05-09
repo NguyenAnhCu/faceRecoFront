@@ -48,7 +48,7 @@ export class RecongnizeStudentComponent implements OnInit {
         const group = new Group(data.group.id, data.group.wording, promo);
         this.student = new Student( data.number, data.firstName, data.firstName, group);
       } else {
-        console.log('Aucun étudiant trouvé');
+        alert ('Aucun étudiant trouvé');
       }
     });
   }
