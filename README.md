@@ -2,6 +2,15 @@
 
 Cette application web est l'interface des fonctionnalités importantes de notre API Face Reco
 
+## Installation
+* Récupérer le code dans un IDE en clonant le projet (Get From Version Control)
+* Dans la console taper : npm install. Cette action installera toutes les dépendances du projet
+* Pour lancer l'application taper : ng serve. Cette action lancera un serveur
+* L'application sera disponible à l'adresse 
+
+Cette application web fonctionne avec l'API FaceReco, il est donc nécessaire de lancer le serveur de l'API avant d'utiliser l'application.
+
+
 ## Fonctionnalités
 
 Notre interface reprend les fonctionnalités suivantes :
