@@ -1,0 +1,45 @@
+{
+  "/api/promotion": {
+    "target": "http://localhost:8080/api/promotion",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/promotion": ""
+    }
+  },
+  "/api/group": {
+    "target": "http://localhost:8080/api/group",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/group": ""
+    }
+  },
+  "/api/student/group": {
+    "target": "http://localhost:8080/api/student/group",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/student/group": ""
+    }
+  },
+  "/api/student/promotion": {
+    "target": "http://localhost:8080/api/student/promotion",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/student/promotion": ""
+    }
+  },
+  "/api/student": {
+    "target": "http://localhost:8080/api/student",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/student": ""
+    }
+  },
+  "/api/timesheet": {
+    "target": "http://localhost:8080/api/timesheet",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/timesheet": ""
+    }
+  }
+}
+

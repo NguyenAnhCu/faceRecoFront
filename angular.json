@@ -64,11 +64,13 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "faceRecoFront:build"
+            "browserTarget": "faceRecoFront:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "faceRecoFront:build:production"
+              "browserTarget": "faceRecoFront:build:production",
+              "proxyConfig": "proxy.conf.json"
             }
           }
         },

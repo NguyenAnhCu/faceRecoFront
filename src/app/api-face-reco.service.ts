@@ -6,7 +6,7 @@ import {PromotionDetails} from './promotion';
 import {StudentDetails} from './student';
 import {TimesheetDetails} from './timesheet';
 
-const url = 'http://localhost:8080/api/';
+const url = 'http://localhost:4200/api/';
 const httpOption = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -60,9 +60,5 @@ export class ApiFaceRecoService {
   }
   validateRecognition(presenceModel) {
     return this.httpClient.post(url + 'timesheet/validatePresence', presenceModel, httpOption);
-  }
-
-  getStudentDetails(id: number): Observable<StudentDetails> {
-    return this.httpClient.get<StudentDetails>(url + 'etudiant/' + id, httpOption);
   }
 }
